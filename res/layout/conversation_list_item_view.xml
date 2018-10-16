@@ -86,7 +86,7 @@
                     android:id="@+id/conversation_checkmark"
                     android:layout_width="@dimen/conversation_list_contact_icon_size"
                     android:layout_height="@dimen/conversation_list_contact_icon_size"
-                    android:src="@drawable/ic_checkmark_circle_blue"
+                    android:src="@drawable/ic_checkmark_circle_blue_custom"
                     android:visibility="gone"
                     android:importantForAccessibility="no"
                     android:background="@android:color/transparent" />

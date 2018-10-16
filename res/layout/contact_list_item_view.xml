@@ -50,10 +50,10 @@
             android:id="@+id/contact_checkmark"
             android:layout_width="@dimen/contact_list_icon_size"
             android:layout_height="@dimen/contact_list_icon_size"
-            android:src="@drawable/ic_checkmark_circle_blue"
+            android:src="@drawable/ic_checkmark_circle_blue_custom"
             android:visibility="gone"
             android:importantForAccessibility="no"
-        android:contentDescription="@null"/>
+            android:contentDescription="@null"/>
 
     </FrameLayout>
 
