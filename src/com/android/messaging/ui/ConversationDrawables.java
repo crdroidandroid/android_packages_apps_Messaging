@@ -53,6 +53,7 @@ public class ConversationDrawables {
     private int mIncomingAudioButtonColor;
     private int mSelectedBubbleColor;
     private int mThemeColor;
+    private int mBubbleColor;
     private TypedArray mColors;
 
     public static ConversationDrawables get() {
@@ -75,11 +76,11 @@ public class ConversationDrawables {
     public void updateDrawables() {
         final Resources resources = mContext.getResources();
 
-        mIncomingBubbleDrawable = resources.getDrawable(R.drawable.msg_bubble_incoming);
+        mIncomingBubbleDrawable = resources.getDrawable(R.drawable.msg_bubble_incoming_new);
         mIncomingBubbleNoArrowDrawable =
                 resources.getDrawable(R.drawable.message_bubble_incoming_no_arrow);
         mIncomingErrorBubbleDrawable = resources.getDrawable(R.drawable.msg_bubble_error);
-        mOutgoingBubbleDrawable =  resources.getDrawable(R.drawable.msg_bubble_outgoing);
+        mOutgoingBubbleDrawable =  resources.getDrawable(R.drawable.msg_bubble_outgoing_new);
         mOutgoingBubbleNoArrowDrawable =
                 resources.getDrawable(R.drawable.message_bubble_outgoing_no_arrow);
         mAudioPlayButtonDrawable = resources.getDrawable(R.drawable.ic_audio_play);
@@ -104,6 +105,7 @@ public class ConversationDrawables {
                 resources.getColor(R.color.message_audio_button_color_incoming);
         mSelectedBubbleColor = resources.getColor(R.color.message_bubble_color_selected);
         mThemeColor = resources.getColor(R.color.primary_color);
+        mBubbleColor = resources.getColor(R.color.google_gray);
         mColors = resources.obtainTypedArray(R.array.letter_tile_colors);
     }
 
@@ -135,7 +137,7 @@ public class ConversationDrawables {
                     int idcolor = Math.abs(identifier.hashCode()) % mColors.length();
                     color = mColors.getColor(idcolor, mThemeColor);
                 } else {
-                    color = mThemeColor;
+                    color = mBubbleColor;
                 }
             }
         } else {

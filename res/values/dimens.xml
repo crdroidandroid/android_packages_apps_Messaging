@@ -29,9 +29,9 @@
     <dimen name="contact_icon_view_small_size">12dp</dimen>
     <dimen name="conversation_list_item_view_padding">16dp</dimen>
     <dimen name="conversation_list_first_item_extra_padding">8dp</dimen>
-    <dimen name="conversation_list_image_preview_corner_radius">3dp</dimen>
+    <dimen name="conversation_list_image_preview_corner_radius">16dp</dimen>
     <dimen name="conversation_list_image_preview_size">56dp</dimen>
-    <dimen name="conversation_list_contact_icon_size">56dp</dimen>
+    <dimen name="conversation_list_contact_icon_size">42dp</dimen>
     <dimen name="conversation_message_contact_icon_size">42dp</dimen>
     <dimen name="conversation_message_photo_min_size">96dp</dimen>
     <dimen name="conversation_list_empty_text_bottom_margin">30dp</dimen>
@@ -104,7 +104,7 @@
 
     <!-- Videos in the message list view should at least be this big in the smallest dimension -->
     <dimen name="video_message_min_size">320dp</dimen>
-    <dimen name="attachment_rounded_corner_radius">3dp</dimen>
+    <dimen name="attachment_rounded_corner_radius">16dp</dimen>
     <dimen name="progress_indicator_default_stroke_width">2dp</dimen>
     <dimen name="progress_indicator_default_radius">12dp</dimen>
     <dimen name="participant_list_text_size">18sp</dimen>

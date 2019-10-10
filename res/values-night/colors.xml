@@ -1,0 +1,187 @@
+<!--
+  ~ Copyright (C) 2014 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  -->
+
+<resources>
+
+    <color name="omni_color5">@*android:color/accent_device_default_light</color>
+    <color name="omni_color4">@*android:color/accent_device_default_dark</color>
+    <color name="omni_color3">#80eeeeee</color>
+<!--    <color name="omni_color1">@*android:color/primary_dark_device_default_light</color> -->
+    <color name="omni_color2">@*android:color/primary_dark_device_default_settings</color>
+    <color name="omni_color1">@*android:color/primary_device_default_settings</color>
+    <color name="omni_color7">@*android:color/background_floating_device_default_dark</color>
+    <color name="omni_text1">#ffffffff</color>
+    <color name="omni_text2">#ffeeeeee</color>
+    <color name="omni_text3">#eeeeeeee</color>
+    <color name="primary_color">@color/omni_color5</color>
+    <color name="permission_check_activity_background">@color/omni_color2</color>
+
+    <!--  Action bar -->
+    <color name="action_bar_title_text_color">#ffffff</color>
+    <color name="action_bar_background_color">@color/omni_color5</color>
+    <color name="action_bar_background_color_dark">@color/omni_color4</color>
+    <color name="contextual_action_bar_background_color">@color/omni_color2</color>
+    <color name="archived_conversation_action_bar_background_color">@color/omni_color5</color>
+    <color name="archived_conversation_action_bar_background_color_dark">@color/omni_color4</color>
+
+    <!-- Conversation list -->
+    <color name="conversation_list_item_read">@color/omni_text2</color>
+    <color name="conversation_list_item_unread">@color/omni_text1</color>
+    <color name="conversation_list_error">#fff45342</color>
+    <color name="conversation_list_name">@color/omni_text1</color>
+    <color name="conversation_list_details">@color/omni_text3</color>
+
+    <color name="conversation_compose_divider_start">#44999999</color>
+
+    <color name="message_text">@color/omni_text1</color>
+    <color name="timestamp_text_outgoing">@color/omni_text3</color>
+    <color name="timestamp_text_incoming">#99ffffff</color>
+    <color name="timestamp_text_failed">#99ff0000</color>
+    <color name="compose_send_text_color">@color/omni_text1</color>
+
+    <color name="message_title_text">@color/omni_text1</color>
+    <color name="message_download_failed_status_text">@color/omni_text2</color>
+    <color name="message_info_text">#99ffffff</color>
+    <color name="message_info_text_incoming_download_failed">#6a6a6a</color>
+    <color name="message_download_failed_timestamp_text">#007fce</color>
+    <color name="message_failed_timestamp_text">#99ff0000</color>
+    <color name="message_action_status_text">#ffffffff</color>
+    <color name="message_action_info_text">#99ffffff</color>
+    <color name="message_action_timestamp_text">#ffffffff</color>
+
+    <color name="background_item_transparent">@android:color/transparent</color>
+    <color name="background_item_activated">@color/omni_color4</color>
+    <color name="background_item_selected">@color/omni_color7</color>
+    <color name="background_item_pressed">@color/omni_color2</color>
+
+    <color name="subject_editor_bubble">@color/omni_color7</color>
+    <color name="message_text_color_incoming">@color/omni_text3</color> <!-- fix white text on white bg #ffffffff-->
+    <color name="message_text_color_incoming_download_failed">#6a6a6a</color>
+    <color name="message_text_color_outgoing">@color/omni_text2</color>
+    <color name="conversation_background">@color/omni_color2</color>
+    <color name="conversation_edge_effect">#9d9d9d</color>
+    <color name="compose_message_send_color">@color/omni_color5</color>
+    <color name="compose_message_send_color_pressed">@color/omni_color3</color>
+    <color name="message_bubble_color_outgoing">@color/omni_color1</color>
+    <color name="message_error_bubble_color_incoming">#fff45342</color>
+    <color name="message_audio_button_color_incoming">@color/omni_color4</color>
+    <color name="message_bubble_color_selected">@color/omni_color3</color>
+    <color name="message_image_selected_tint">#80689F38</color>
+    <color name="generic_video_icon">#ff8f8f8f</color>
+
+    <!-- Base color used for color filtering. -->
+    <color name="color_filter_base_color">@color/omni_color1</color>
+
+    <!-- Activity background color -->
+    <drawable name="class_zero_background">@color/omni_color1</drawable>
+
+    <color name="contact_avatar_default_background">@color/omni_color2</color>
+    <color name="contact_avatar_pressed_color">#40ffffff</color>
+    <color name="contact_list_text_primary">@color/omni_text1</color>
+    <color name="contact_list_text_secondary">@color/omni_text2</color>
+
+    <color name="compose_contact_text">@color/omni_text1</color>
+    <color name="compose_contact_faint_text">@color/omni_text2</color>
+    <color name="compose_contact_divider">#44999999</color>
+    <color name="contact_picker_tab_pressed">#ddffffff</color>
+    <color name="contact_picker_tab_underline">@color/omni_color3</color>
+    <color name="contact_list_alphabet_header">@color/omni_color5</color>
+    <color name="contact_picker_background">@color/omni_color2</color>
+    <color name="chips_dropdown_background_activated">@color/omni_color3</color>
+    <color name="chips_dropdown_background_pressed">@color/omni_color4</color>
+    <color name="chips_background_color">@color/omni_color4</color>
+    <color name="chips_text_color">@color/omni_text1</color>
+
+    <color name="camera_button_container_background">#80000000</color>
+
+    <color name="translucent_white">#80ffffff</color>
+
+    <color name="gallery_image_default_background">#eeeeee</color>
+    <color name="gallery_image_pressed">#6733b5e5</color>
+    <color name="attachment_preview_more_items_text_background">@color/omni_color7</color>
+
+    <color name="letter_tile_font_color">#ffffff</color>
+
+    <color name="audio_picker_level_primary_color">#29ffffff</color>
+    <color name="audio_record_control_button_stroke">#30ffffff</color>
+    <color name="audio_picker_hint_text_color">#40ffffff</color>
+    <color name="audio_picker_timer_text_color">#dedede</color>
+    <color name="audio_attachment_timer_text_color">#dedede</color>
+    <color name="audio_progress_bar_color">@color/omni_color5</color>
+
+    <color name="notification_sender_text">#9A9A9A</color>
+    <color name="notification_secondary_text">#FFFFFF</color>
+    <color name="notification_tertiary_text">#FFFFFF</color>
+    <color name="wearable_notification_participants_count">#a2a2a2</color>
+    <color name="notification_accent_color">@color/omni_color5</color>
+    <color name="notification_warning_color">#ffffff</color>
+    <color name="notification_subject_color">@color/omni_text1</color>
+
+    <color name="participant_list_text_primary">@color/omni_text1</color>
+    <color name="participant_list_text_secondary">@color/omni_text2</color>
+    <color name="people_and_options_header_text">@color/omni_text1</color>
+    <color name="people_and_options_list_divider">#222222</color>
+
+    <color name="fab_color">@color/omni_color5</color>
+    <color name="fab_pressed_color">@color/omni_color3</color>
+    <color name="fab_ripple">@color/omni_color5</color>
+
+    <color name="message_text_counter_color">@color/omni_text1</color>
+    <color name="mms_indicator_color">@color/omni_color3</color>
+    <color name="list_empty_text">@color/omni_color2</color>
+    <color name="low_storage_action_item_color">#ffeeeeee</color>
+    <color name="unblock_item_text_color">@color/omni_color5</color>
+    <color name="open_conversation_animation_background_shadow">@color/omni_color1</color>
+    <color name="compose_notification_bar_background">@color/omni_color5</color>
+
+    <color name="sim_selector_text_primary">@color/omni_text1</color>
+    <color name="sim_selector_text_secondary">@color/omni_text2</color>
+    <color name="sim_selector_background_end">@color/omni_color2</color>
+    <color name="sim_selector_background_start">@color/omni_color1</color>
+    <color name="sim_indicator_color_light">#ffffff</color>
+    <color name="sim_indicator_color_dark">#777777</color>
+
+    <color name="text_highlight_color">@color/omni_color4</color>
+    <color name="search_view_text_cursor">@color/omni_color3</color>
+
+    <color name="button_bar_action_button_text_color">@color/omni_color4</color>
+    <color name="button_bar_cancel_button_text_color">@color/omni_color4</color>
+
+    <color name="settings_list_text_primary">@color/omni_text1</color>
+    <color name="settings_list_text_secondary">@color/omni_text2</color>
+    <color name="group_mms_setting_text_color">@color/omni_text2</color>
+    <color name="settings_item_title_text_primary">@color/omni_text2</color>
+
+    <color name="contact_picker_button_text_color">@color/omni_text1</color>
+
+    <color name="widget_text_color">@color/omni_text1</color>
+    <color name="widget_incoming_text_color">@color/omni_text1</color>
+    <color name="widget_outgoing_text_color">@color/omni_text2</color>
+    <color name="widget_background_color">@color/omni_color1</color>
+    <color name="ripple_material_light">@color/omni_color3</color>
+    <color name="widget_conversation_title_color">#FFFFFF</color>
+
+    <color name="attachment_chooser_audio_background">@color/omni_color7</color>
+    <color name="attachment_chooser_vcard_background">@color/omni_color7</color>
+
+    <color name="fastscroll_track_color">#1e999999</color>
+    <color name="fastscroll_thumb_color">#42999999</color>
+    <color name="fastscroll_preview_text_color">#999999</color>
+
+    <color name="google_gray">@color/omni_color7</color>
+    <color name="ic_launcher_background">@color/omni_color5</color>
+</resources>
+
