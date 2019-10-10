@@ -45,7 +45,8 @@ public class AddContactsConfirmationDialog implements DialogInterface.OnClickLis
     public void show() {
         final int confirmAddContactStringId = R.string.add_contact_confirmation;
         final int cancelStringId = android.R.string.cancel;
-        final AlertDialog alertDialog = new AlertDialog.Builder(mContext)
+        final AlertDialog alertDialog = new AlertDialog.Builder(mContext,
+                 R.style.BugleThemeDialog)
         .setTitle(R.string.add_contact_confirmation_dialog_title)
         .setView(createBodyView())
         .setPositiveButton(confirmAddContactStringId, this)

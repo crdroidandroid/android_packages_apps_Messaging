@@ -63,7 +63,8 @@
         android:layout_gravity="top"
         android:orientation="vertical"
         style="@style/WidgetConversationItemBodyIncoming"
-        android:background="@drawable/widget_msg_bubble_incoming"
+        android:background="@drawable/widget_msg_bubble_incoming_new"
+        android:paddingLeft="8px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 

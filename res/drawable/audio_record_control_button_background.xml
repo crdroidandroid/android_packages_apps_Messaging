@@ -22,5 +22,5 @@
         android:width="1dp"
         android:color="@color/audio_record_control_button_stroke"/>
     <solid
-        android:color="@android:color/white"/>
+        android:color="@color/contact_picker_background"/>
 </shape>

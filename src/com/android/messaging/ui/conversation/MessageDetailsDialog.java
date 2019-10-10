@@ -86,7 +86,7 @@ public class MessageDetailsDialog {
 
     private static void showDialog(final Context context, String messageDetails) {
         if (!TextUtils.isEmpty(messageDetails)) {
-            new AlertDialog.Builder(context)
+            new AlertDialog.Builder(context, R.style.BugleThemeDialog)
                     .setTitle(R.string.message_details_title)
                     .setMessage(messageDetails)
                     .setCancelable(true)

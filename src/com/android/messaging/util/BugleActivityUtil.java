@@ -68,7 +68,7 @@ public class BugleActivityUtil {
         }
         UserManager userManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         if (userManager.hasUserRestriction(UserManager.DISALLOW_SMS)) {
-            new AlertDialog.Builder(activity)
+            new AlertDialog.Builder(activity, R.style.BugleThemeDialog)
                     .setMessage(R.string.requires_sms_permissions_message)
                     .setCancelable(false)
                     .setNegativeButton(R.string.requires_sms_permissions_close_button,

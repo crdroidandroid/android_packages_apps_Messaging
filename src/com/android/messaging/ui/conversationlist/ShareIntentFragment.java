@@ -85,7 +85,8 @@ public class ShareIntentFragment extends DialogFragment implements ConversationL
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mAdapter);
-        final Builder dialogBuilder = new AlertDialog.Builder(activity)
+        final Builder dialogBuilder = new AlertDialog.Builder(activity,
+                R.style.BugleThemeDialog)
                 .setView(view)
                 .setTitle(R.string.share_intent_activity_label);
 

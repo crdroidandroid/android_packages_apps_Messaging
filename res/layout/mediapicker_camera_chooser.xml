@@ -143,7 +143,7 @@
         android:layout_height="match_parent"
         android:text="@string/enable_permission_procedure"
         android:contentDescription="@string/enable_permission_procedure_description"
-        android:background="@android:color/white"
+        android:background="@color/contextual_action_bar_background_color"
         android:gravity="center"
         android:visibility="gone" />
 

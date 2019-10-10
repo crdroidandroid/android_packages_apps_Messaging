@@ -42,7 +42,7 @@ public class ArchivedConversationListActivity extends AbstractConversationListAc
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setBackgroundDrawable(new ColorDrawable(
                 getResources().getColor(
-                        R.color.archived_conversation_action_bar_background_color_dark)));
+                        R.color.archived_conversation_action_bar_background_color)));
         actionBar.show();
         super.updateActionBar(actionBar);
     }

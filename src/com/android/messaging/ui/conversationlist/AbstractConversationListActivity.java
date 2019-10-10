@@ -131,7 +131,7 @@ public abstract class AbstractConversationListActivity  extends BugleActionBarAc
             return;
         }
 
-        new AlertDialog.Builder(this)
+        new AlertDialog.Builder(this, R.style.BugleThemeDialog)
                 .setTitle(getResources().getQuantityString(
                         R.plurals.delete_conversations_confirmation_dialog_title,
                         conversations.size()))
@@ -205,7 +205,7 @@ public abstract class AbstractConversationListActivity  extends BugleActionBarAc
     @Override
     public void onActionBarBlock(final SelectedConversation conversation) {
         final Resources res = getResources();
-        new AlertDialog.Builder(this)
+        new AlertDialog.Builder(this, R.style.BugleThemeDialog)
                 .setTitle(res.getString(R.string.block_confirmation_title,
                         conversation.otherParticipantNormalizedDestination))
                 .setMessage(res.getString(R.string.block_confirmation_message))
