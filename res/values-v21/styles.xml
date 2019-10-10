@@ -22,7 +22,7 @@
 
     <style name="BugleTheme.DialogActivity" parent="@style/Theme.AppCompat.Light.Dialog">
         <item name="android:windowNoTitle">false</item>
-        <item name="android:background">@android:color/white</item>
+        <item name="android:background">@color/contextual_action_bar_background_color</item>
     </style>
 
     <style name="ContactListItemDrawableIndicator">

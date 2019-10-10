@@ -28,6 +28,8 @@
         app:iconSize="normal"
         android:clickable="true"
         android:layout_gravity="center_vertical"
+        android:paddingRight="16px"
+        android:paddingLeft="16px"
         android:importantForAccessibility="no" />
 
     <com.android.messaging.ui.conversation.ConversationMessageBubbleView

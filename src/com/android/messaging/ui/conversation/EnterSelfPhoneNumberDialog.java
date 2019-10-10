@@ -49,7 +49,8 @@ public class EnterSelfPhoneNumberDialog extends DialogFragment {
         final LayoutInflater inflater = LayoutInflater.from(context);
         mEditText = (EditText) inflater.inflate(R.layout.enter_phone_number_view, null, false);
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context,
+                R.style.BugleThemeDialog);
         builder.setTitle(R.string.enter_phone_number_title)
                 .setMessage(R.string.enter_phone_number_text)
                 .setView(mEditText)
