@@ -34,7 +34,10 @@
          <item name="android:dropDownListViewStyle">@style/DropDownListViewStyle</item>
          <item name="colorPrimary">@color/action_bar_background_color</item>
          <item name="colorPrimaryDark">@color/action_bar_background_color</item>
-         <item name="colorAccent">@color/lineage_accent</item>
+         <item name="android:textColorPrimary">@color/omni_text1</item>
+         <item name="android:textColorSecondary">@color/omni_text2</item>
+         <item name="android:textColorTertiary">@color/omni_text3</item>
+         <item name="colorAccent">@color/action_bar_background_color</item>
          <item name="android:textColorHighlight">@color/text_highlight_color</item>
          <item name="actionBarStyle">@style/BugleActionBar</item>
          <item name="apnPreferenceStyle">@style/ApnPreference</item>
@@ -43,13 +46,16 @@
          <item name="android:actionBarPopupTheme">@style/PopupMenuStyleAppCompat</item>
     </style>
 
-    <style name="ListViewStyle" parent="@android:style/Widget.Material.Light.ListView">
+    <style name="ListViewStyle" parent="@android:style/Widget.DeviceDefault.ListView">
         <item name="android:overScrollMode">always</item>
         <item name="android:textColor">@color/message_title_text</item>
+         <item name="android:textColorPrimary">@color/omni_text1</item>
+         <item name="android:textColorSecondary">@color/omni_text2</item>
+         <item name="android:textColorTertiary">@color/omni_text3</item>
         <item name="android:background">@color/contextual_action_bar_background_color</item>
     </style>
 
-    <style name="PopupMenuStyleAppCompat" parent="@android:style/Theme.DeviceDefault.Light.Dialog">
+    <style name="PopupMenuStyleAppCompat" parent="@android:style/Theme.DeviceDefault.Dialog">
     </style>
 
     <style name="BugleTheme.ConversationActivity"
@@ -59,15 +65,17 @@
     <style name="BugleTheme.ConversationActivityBase" parent="BugleTheme">
         <item name="android:windowBackground">@color/conversation_background</item>
         <item name="windowActionBarOverlay">true</item>
-        <item name="colorAccent">@color/lineage_accent</item>
         <item name="android:fastScrollPreviewBackgroundLeft">@drawable/contacts_fastscroll_label_left</item>
         <item name="android:fastScrollPreviewBackgroundRight">@drawable/contacts_fastscroll_label_right</item>
     </style>
 
-    <style name="BugleTheme.DialogActivity" parent="@android:style/Theme.DeviceDefault.Light.Dialog">
+    <style name="BugleTheme.DialogActivity" parent="@android:style/Theme.DeviceDefault.Dialog">
     </style>
 
     <style name="BugleThemeDialog" parent="BugleTheme.DialogActivity">
+        <item name="android:textColorPrimary">@color/omni_text1</item>
+        <item name="android:textColorSecondary">@color/omni_text2</item>
+        <item name="android:textColorTertiary">@color/omni_text3</item>
         <item name="android:colorAccent">@color/primary_color</item>
         <item name="android:colorPrimary">@color/archived_conversation_action_bar_background_color</item>
         <item name="android:colorPrimaryDark">@color/archived_conversation_action_bar_background_color</item>
@@ -96,16 +104,7 @@
         <item name="android:windowNoDisplay">true</item>
     </style>
 
-    <style name="Translucent" parent="BugleBaseTheme">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:windowDisablePreview">true</item>
-    </style>
-
-    <style name="BugleActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+    <style name="BugleActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
         <item name="height">@dimen/action_bar_height</item>
         <item name="displayOptions">showTitle</item>
         <item name="titleTextStyle">@style/BugleActionBarTitleTextStyle</item>
@@ -162,8 +161,7 @@
         <item name="android:background">@null</item>
         <item name="android:scrollHorizontally">false</item>
         <item name="android:textCursorDrawable">@null</item>
-        <item name="android:inputType">textAutoCorrect|textCapSentences|textMultiLine</item>
-        <item name="android:colorAccent">@color/lineage_accent</item>
+        <item name="android:inputType">textShortMessage|textAutoCorrect|textCapSentences|textMultiLine</item>
     </style>
 
     <style name="ConversationComposeSubjectText" parent="ConversationComposeSendText">
@@ -305,6 +303,10 @@
         <item name="android:textColor">@color/conversation_list_name</item>
     </style>
 
+    <style name="ConversationListNotificationBellPaddingStyle">
+        <item name="android:paddingRight">@dimen/conversation_list_notification_bell_padding</item>
+    </style>
+
     <style name="ComposeMessageViewFrameLayoutStyle">
         <item name="android:paddingRight">@dimen/compose_message_send_button_padding_right</item>
     </style>
@@ -357,6 +359,12 @@
         <item name="android:paddingRight">@dimen/copy_contact_dialog_right_padding</item>
     </style>
 
+    <style name="ParticipantListItemDetail">
+        <item name="android:textSize">@dimen/participant_list_detail_text_size</item>
+        <item name="android:textColor">@color/participant_list_text_secondary</item>
+        <item name="android:background">@null</item>
+    </style>
+
     <style name="PeopleListItemViewStyle">
         <item name="android:paddingLeft">16dp</item>
     </style>
@@ -372,7 +380,7 @@
         <item name="android:background">@null</item>
     </style>
 
-    <style name="DropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
+    <style name="DropDownListViewStyle">
       <item name="android:dividerHeight">0dp</item>
     </style>
 
