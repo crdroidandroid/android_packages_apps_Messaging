@@ -94,6 +94,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:paddingRight="16px"
                 android:orientation="vertical">
 
                 <!-- Contains media button and compose message bubble whose centers should be
@@ -121,8 +122,9 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_gravity="center"
-                        android:background="@drawable/msg_bubble_input"
+                        android:background="@drawable/msg_bubble_input_new"
                         android:hint="@string/compose_message_view_hint_text"
+                        android:textColorHint="@color/conversation_list_item_read"
                         android:imeOptions="actionSend|flagNoEnterAction|flagNoExtractUi" />
 
                 </LinearLayout>

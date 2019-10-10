@@ -92,7 +92,8 @@ public class SmsStorageLowWarningFragment extends Fragment {
 
         @Override
         public Dialog onCreateDialog(final Bundle savedInstanceState) {
-            final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),
+                    R.style.BugleThemeDialog);
 
             final LayoutInflater inflater = getActivity().getLayoutInflater();
             final View dialogLayout = inflater.inflate(
