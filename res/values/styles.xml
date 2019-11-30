@@ -68,7 +68,7 @@
     </style>
 
     <style name="BugleThemeDialog" parent="BugleTheme.DialogActivity">
-        <item name="android:colorAccent">@color/primary_color</item>
+        <item name="android:colorAccent">@color/lineage_accent</item>
         <item name="android:colorPrimary">@color/archived_conversation_action_bar_background_color</item>
         <item name="android:colorPrimaryDark">@color/archived_conversation_action_bar_background_color</item>
         <item name="android:background">@color/contextual_action_bar_background_color</item>
