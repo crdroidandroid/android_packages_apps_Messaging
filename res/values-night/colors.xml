@@ -165,5 +165,22 @@
     <color name="fastscroll_preview_text_color">#999999</color>
 
     <color name="google_gray">@color/omni_color7</color>
+
+    <array name="letter_tile_colors">
+        <item>#8c2b23</item>
+        <item>#af164a</item>
+        <item>#51d847</item>
+        <item>#4e2b8c</item>
+        <item>#2e3b84</item>
+        <item>#2d5dad</item>
+        <item>#0071a8</item>
+        <item>#0f5d66</item>
+        <item>#02665c</item>
+        <item>#0b7743</item>
+        <item>#507a2c</item>
+        <item>#af4f00</item>
+        <item>#cc451a</item>
+        <item>#595959</item>
+    </array>
 </resources>
 

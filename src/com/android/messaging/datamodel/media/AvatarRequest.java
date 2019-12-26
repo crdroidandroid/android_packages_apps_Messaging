@@ -17,6 +17,7 @@ package com.android.messaging.datamodel.media;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -42,10 +43,12 @@ import java.util.List;
 public class AvatarRequest extends UriImageRequest<AvatarRequestDescriptor> {
     private static Bitmap sDefaultPersonBitmap;
     private static Bitmap sDefaultPersonBitmapLarge;
+    private static TypedArray sColors;
 
     public AvatarRequest(final Context context,
             final AvatarRequestDescriptor descriptor) {
         super(context, descriptor);
+        sColors = context.getResources().obtainTypedArray(R.array.letter_tile_colors);
     }
 
     @Override
@@ -106,7 +109,8 @@ public class AvatarRequest extends UriImageRequest<AvatarRequestDescriptor> {
             avatarType = AvatarUriUtil.getAvatarType(generatedUri);
             if (AvatarUriUtil.TYPE_LETTER_TILE_URI.equals(avatarType)) {
                 final String name = AvatarUriUtil.getName(generatedUri);
-                bitmap = renderLetterTile(name, width, height);
+                final String identifier = AvatarUriUtil.getIdentifier(generatedUri);
+                bitmap = renderLetterTile(name, identifier, width, height);
             } else {
                 bitmap = renderDefaultAvatar(width, height);
             }
@@ -153,12 +157,12 @@ public class AvatarRequest extends UriImageRequest<AvatarRequestDescriptor> {
         return bitmap;
     }
 
-    private Bitmap renderLetterTile(final String name, final int width, final int height) {
+    private Bitmap renderLetterTile(final String name, final String identifier, final int width, final int height) {
         final float halfWidth = width / 2;
         final float halfHeight = height / 2;
         final int minOfWidthAndHeight = Math.min(width, height);
         final Bitmap bitmap = getBitmapPool().createOrReuseBitmap(width, height,
-                getBackgroundColor());
+                getBackgroundColor(identifier));
         final Resources resources = mContext.getResources();
         final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
@@ -185,5 +189,10 @@ public class AvatarRequest extends UriImageRequest<AvatarRequestDescriptor> {
     @Override
     public int getCacheId() {
         return BugleMediaCacheManager.AVATAR_IMAGE_CACHE;
+    }
+
+    private int getBackgroundColor(String identifier) {
+        final int color = Math.abs(identifier.hashCode()) % sColors.length();
+        return sColors.getColor(color, mContext.getResources().getColor(R.color.primary_color));
     }
 }
