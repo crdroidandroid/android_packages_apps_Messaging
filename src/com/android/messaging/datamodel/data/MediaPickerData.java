@@ -23,12 +23,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 
-import com.android.messaging.datamodel.AudioBoundCursorLoader;
 import com.android.messaging.datamodel.BoundCursorLoader;
 import com.android.messaging.datamodel.GalleryBoundCursorLoader;
 import com.android.messaging.datamodel.binding.BindableData;
 import com.android.messaging.datamodel.binding.BindingBase;
-import com.android.messaging.ui.mediapicker.MediaPicker;
 import com.android.messaging.util.Assert;
 import com.android.messaging.util.BuglePrefs;
 import com.android.messaging.util.BuglePrefsKeys;
@@ -46,17 +44,14 @@ public class MediaPickerData extends BindableData {
     private final Context mContext;
     private LoaderManager mLoaderManager;
     private final GalleryLoaderCallbacks mGalleryLoaderCallbacks;
-    private MediaPickerDataListener mImageListener;
-    private MediaPickerDataListener mAudioListener;
-    private static final String TAG = MediaPickerData.class.getSimpleName();
+    private MediaPickerDataListener mListener;
 
     public MediaPickerData(final Context context) {
         mContext = context;
         mGalleryLoaderCallbacks = new GalleryLoaderCallbacks();
     }
 
-    public static final int GALLERY_IMAGE_LOADER = 1;
-    public static final int GALLERY_AUDIO_LOADER = 2;
+    public static final int GALLERY_MEDIA_LOADER = 1;
 
     /**
      * A trampoline class so that we can inherit from LoaderManager.LoaderCallbacks multiple times.
@@ -68,11 +63,8 @@ public class MediaPickerData extends BindableData {
             // Check if data still bound to the requesting ui element
             if (isBound(bindingId)) {
                 switch (id) {
-                    case GALLERY_IMAGE_LOADER:
+                    case GALLERY_MEDIA_LOADER:
                         return new GalleryBoundCursorLoader(bindingId, mContext);
-
-                    case GALLERY_AUDIO_LOADER:
-                        return new AudioBoundCursorLoader(bindingId, mContext);
 
                     default:
                         Assert.fail("Unknown loader id for gallery picker!");
@@ -92,14 +84,9 @@ public class MediaPickerData extends BindableData {
             final BoundCursorLoader cursorLoader = (BoundCursorLoader) loader;
             if (isBound(cursorLoader.getBindingId())) {
                 switch (loader.getId()) {
-                    case GALLERY_IMAGE_LOADER:
-                        mImageListener.onMediaPickerDataUpdated(MediaPickerData.this, data,
-                                GALLERY_IMAGE_LOADER);
-                        break;
-
-                    case GALLERY_AUDIO_LOADER:
-                        mAudioListener.onMediaPickerDataUpdated(MediaPickerData.this, data,
-                                GALLERY_AUDIO_LOADER);
+                    case GALLERY_MEDIA_LOADER:
+                        mListener.onMediaPickerDataUpdated(MediaPickerData.this, data,
+                                GALLERY_MEDIA_LOADER);
                         break;
 
                     default:
@@ -119,14 +106,9 @@ public class MediaPickerData extends BindableData {
             final BoundCursorLoader cursorLoader = (BoundCursorLoader) loader;
             if (isBound(cursorLoader.getBindingId())) {
                 switch (loader.getId()) {
-                    case GALLERY_IMAGE_LOADER:
-                        mImageListener.onMediaPickerDataUpdated(MediaPickerData.this, null,
-                                GALLERY_IMAGE_LOADER);
-                        break;
-
-                    case GALLERY_AUDIO_LOADER:
-                        mAudioListener.onMediaPickerDataUpdated(MediaPickerData.this, null,
-                                GALLERY_AUDIO_LOADER);
+                    case GALLERY_MEDIA_LOADER:
+                        mListener.onMediaPickerDataUpdated(MediaPickerData.this, null,
+                                GALLERY_MEDIA_LOADER);
                         break;
 
                     default:
@@ -147,15 +129,12 @@ public class MediaPickerData extends BindableData {
             args = new Bundle();
         }
         args.putString(BINDING_ID, binding.getBindingId());
-        if (loaderId == GALLERY_IMAGE_LOADER) {
+        if (loaderId == GALLERY_MEDIA_LOADER) {
             mLoaderManager.initLoader(loaderId, args, mGalleryLoaderCallbacks).forceLoad();
-            mImageListener = listener;
-        } else if (loaderId == GALLERY_AUDIO_LOADER) {
-            mLoaderManager.initLoader(loaderId, args, mGalleryLoaderCallbacks).forceLoad();
-            mAudioListener = listener;
-        }else {
+        } else {
             Assert.fail("Unsupported loader id for media picker!");
         }
+        mListener = listener;
     }
 
     public void destroyLoader(final int loaderId) {
@@ -170,8 +149,7 @@ public class MediaPickerData extends BindableData {
     protected void unregisterListeners() {
         // This could be null if we bind but the caller doesn't init the BindableData
         if (mLoaderManager != null) {
-            mLoaderManager.destroyLoader(GALLERY_IMAGE_LOADER);
-            mLoaderManager.destroyLoader(GALLERY_AUDIO_LOADER);
+            mLoaderManager.destroyLoader(GALLERY_MEDIA_LOADER);
             mLoaderManager = null;
         }
     }

@@ -238,6 +238,11 @@
         <item name="android:paddingLeft">16dp</item>
     </style>
 
+    <style name="ContactPickerHintText">
+        <item name="android:textSize">@dimen/contact_picker_text_size</item>
+        <item name="android:textColor">@color/contact_picker_hint_text_color</item>
+    </style>
+
     <style name="VcardAttachmentSingleStyle">
         <item name="android:paddingRight">@dimen/message_text_left_right_padding</item>
         <item name="android:paddingLeft">@dimen/message_text_left_right_padding</item>
@@ -376,9 +381,9 @@
       <item name="android:dividerHeight">0dp</item>
     </style>
 
-    <style name="ComposeMessageViewTextCounterStyle">
-        <item name="android:textColor">@color/message_text_counter_color</item>
-        <item name="android:textSize">@dimen/message_text_counter_size</item>
+    <style name="ComposeMessageViewMessageBodySizeStyle">
+        <item name="android:textColor">@color/message_body_size_text_color</item>
+        <item name="android:textSize">@dimen/message_body_size_text_size</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:layout_gravity">right|center_vertical</item>
         <item name="android:paddingRight">@dimen/compose_message_text_box_padding_side</item>

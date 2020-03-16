@@ -16,7 +16,6 @@
 
 package com.android.messaging.ui.mediapicker;
 
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -48,7 +47,6 @@ import com.android.messaging.datamodel.data.PendingAttachmentData;
 import com.android.messaging.datamodel.data.DraftMessageData.DraftMessageSubscriptionDataProvider;
 import com.android.messaging.ui.BugleActionBarActivity;
 import com.android.messaging.ui.FixedViewPagerAdapter;
-import com.android.messaging.ui.mediapicker.DocumentImagePicker.SelectionListener;
 import com.android.messaging.util.AccessibilityUtil;
 import com.android.messaging.util.Assert;
 import com.android.messaging.util.UiUtils;
@@ -159,9 +157,6 @@ public class MediaPicker extends Fragment implements DraftMessageSubscriptionDat
     @VisibleForTesting
     final Binding<MediaPickerData> mBinding = BindingBase.createBinding(this);
 
-    /** Handles picking image from the document picker */
-    private DocumentImagePicker mDocumentImagePicker;
-
     /** Provides subscription-related data to access per-subscription configurations. */
     private DraftMessageSubscriptionDataProvider mSubscriptionDataProvider;
 
@@ -178,8 +173,8 @@ public class MediaPicker extends Fragment implements DraftMessageSubscriptionDat
         mChoosers = new MediaChooser[] {
             new CameraMediaChooser(this),
             new GalleryMediaChooser(this),
-            new AudioListChooser(this),
             new AudioMediaChooser(this),
+            new ContactMediaChooser(this),
         };
 
         mOpen = false;
@@ -204,15 +199,6 @@ public class MediaPicker extends Fragment implements DraftMessageSubscriptionDat
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding.getData().init(getLoaderManager());
-        mDocumentImagePicker = new DocumentImagePicker(this,
-                new SelectionListener() {
-            @Override
-            public void onDocumentSelected(final PendingAttachmentData data) {
-                if (mBinding.isBound()) {
-                    dispatchPendingItemAdded(data);
-                }
-            }
-        });
     }
 
     @Override
@@ -296,7 +282,7 @@ public class MediaPicker extends Fragment implements DraftMessageSubscriptionDat
     @Override
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mDocumentImagePicker.onActivityResult(requestCode, resultCode, data);
+        mSelectedChooser.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -711,13 +697,6 @@ public class MediaPicker extends Fragment implements DraftMessageSubscriptionDat
         mPagerAdapter.resetState();
     }
 
-    /**
-     * Launch an external picker to pick item from document picker as attachment.
-     */
-    public void launchDocumentPicker() {
-        mDocumentImagePicker.launchPicker();
-    }
-
     public ImmutableBindingRef<MediaPickerData> getMediaPickerDataBinding() {
         return BindingBase.createBindingReference(mBinding);
     }
@@ -726,7 +705,7 @@ public class MediaPicker extends Fragment implements DraftMessageSubscriptionDat
     protected static final int LOCATION_PERMISSION_REQUEST_CODE = 2;
     protected static final int RECORD_AUDIO_PERMISSION_REQUEST_CODE = 3;
     protected static final int GALLERY_PERMISSION_REQUEST_CODE = 4;
-    protected static final int AUDIO_LIBRARY_PERMISSION_REQUEST_CODE = 5;
+    protected static final int READ_CONTACT_PERMISSION_REQUEST_CODE = 5;
 
     @Override
     public void onRequestPermissionsResult(

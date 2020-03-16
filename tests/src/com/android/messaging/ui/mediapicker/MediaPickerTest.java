@@ -97,13 +97,13 @@ public class MediaPickerTest extends FragmentTestCase<MediaPicker> {
     public void testDefaultTabs() {
         Mockito.when(mMockMediaPickerData.getSelectedChooserIndex()).thenReturn(0);
         initFragment(MediaPicker.MEDIA_TYPE_ALL, new Integer[] {
-                MediaPickerData.GALLERY_IMAGE_LOADER },
+                MediaPickerData.GALLERY_MEDIA_LOADER },
                 false);
         final MediaPicker mediaPicker = getFragment();
         final View view = mediaPicker.getView();
         assertNotNull(view);
         final ViewGroup tabStrip = (ViewGroup) view.findViewById(R.id.mediapicker_tabstrip);
-        assertEquals(tabStrip.getChildCount(), 3);
+        assertEquals(tabStrip.getChildCount(), 4);
         for (int i = 0; i < tabStrip.getChildCount(); i++) {
             final ImageButton tabButton = (ImageButton) tabStrip.getChildAt(i);
             assertEquals(View.VISIBLE, tabButton.getVisibility());
@@ -114,13 +114,13 @@ public class MediaPickerTest extends FragmentTestCase<MediaPicker> {
     public void testFilterTabsBeforeAttach() {
         Mockito.when(mMockMediaPickerData.getSelectedChooserIndex()).thenReturn(0);
         initFragment(MediaPicker.MEDIA_TYPE_IMAGE, new Integer[] {
-                MediaPickerData.GALLERY_IMAGE_LOADER },
+                MediaPickerData.GALLERY_MEDIA_LOADER },
                 true);
         final MediaPicker mediaPicker = getFragment();
         final View view = mediaPicker.getView();
         assertNotNull(view);
         final ViewGroup tabStrip = (ViewGroup) view.findViewById(R.id.mediapicker_tabstrip);
-        assertEquals(tabStrip.getChildCount(), 3);
+        assertEquals(tabStrip.getChildCount(), 4);
         for (int i = 0; i < tabStrip.getChildCount(); i++) {
             final ImageButton tabButton = (ImageButton) tabStrip.getChildAt(i);
             assertEquals(i == 0, tabButton.isSelected());

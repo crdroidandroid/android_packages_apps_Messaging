@@ -34,7 +34,6 @@ import com.android.messaging.datamodel.data.DraftMessageData;
 import com.android.messaging.datamodel.data.GalleryGridItemData;
 import com.android.messaging.datamodel.data.MessagePartData;
 import com.android.messaging.datamodel.data.DraftMessageData.DraftMessageDataListener;
-import com.android.messaging.datamodel.data.ParticipantData;
 import com.android.messaging.ui.PersistentInstanceState;
 import com.android.messaging.util.Assert;
 import com.android.messaging.util.ContentType;
@@ -44,16 +43,16 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * Shows a list of galley images from external storage in a GridView with multi-select
- * capabilities, and with the option to intent out to a standalone image picker.
+ * Shows a list of galley mediae from external storage in a GridView with multi-select capabilities,
+ * and with the option to intent out to a standalone media picker.
  */
 public class GalleryGridView extends MediaPickerGridView implements
         GalleryGridItemView.HostInterface,
         PersistentInstanceState,
         DraftMessageDataListener {
     /**
-     * Implemented by the owner of this GalleryGridView instance to communicate on image
-     * picking and multi-image selection events.
+     * Implemented by the owner of this GalleryGridView instance to communicate on media picking and
+     * multi-media selection events.
      */
     public interface GalleryGridViewListener {
         void onDocumentPickerItemClicked();
@@ -70,18 +69,9 @@ public class GalleryGridView extends MediaPickerGridView implements
     private boolean mIsMultiSelectMode = false;
     private ImmutableBindingRef<DraftMessageData> mDraftMessageDataModel;
 
-    /** Provides subscription-related data to access per-subscription configurations. */
-    private DraftMessageData.DraftMessageSubscriptionDataProvider mSubscriptionDataProvider;
-
-
     public GalleryGridView(final Context context, final AttributeSet attrs) {
         super(context, attrs);
         mSelectedImages = new ArrayMap<Uri, MessagePartData>();
-    }
-
-    public void setSubscriptionProvider(DraftMessageData.DraftMessageSubscriptionDataProvider
-                                                provider) {
-        mSubscriptionDataProvider = provider;
     }
 
     public void setHostInterface(final GalleryGridViewListener hostInterface) {
@@ -131,23 +121,13 @@ public class GalleryGridView extends MediaPickerGridView implements
         return mIsMultiSelectMode;
     }
 
-    @Override
-    public int getSubscriptionProviderSubId() {
-        if (mSubscriptionDataProvider != null) {
-            return mSubscriptionDataProvider.getConversationSelfSubId();
-        } else {
-            return ParticipantData.DEFAULT_SELF_SUB_ID;
-        }
-    }
-
-
     private void toggleItemSelection(final Rect startRect, final GalleryGridItemData data) {
         Assert.isTrue(isMultiSelectEnabled());
         if (isItemSelected(data)) {
             final MessagePartData item = mSelectedImages.remove(data.getImageUri());
             mListener.onItemUnselected(item);
             if (mSelectedImages.size() == 0) {
-                // No image is selected any more, turn off multi-select mode.
+                // No media is selected any more, turn off multi-select mode.
                 setMultiSelectEnabled(false);
             }
         } else {
