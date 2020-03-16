@@ -111,6 +111,8 @@
     <color name="audio_picker_timer_text_color">#dedede</color>
     <color name="audio_attachment_timer_text_color">#dedede</color>
 
+    <color name="contact_picker_hint_text_color">#40ffffff</color>
+
     <color name="notification_sender_text">#9A9A9A</color>
     <color name="notification_secondary_text">#FFFFFF</color>
     <color name="notification_tertiary_text">#FFFFFF</color>
@@ -124,7 +126,7 @@
 
     <color name="fab_pressed_color">@color/omni_color3</color>
 
-    <color name="message_text_counter_color">@color/omni_text1</color>
+    <color name="message_body_size_text_color">@color/omni_text1</color>
     <color name="mms_indicator_color">@color/omni_color3</color>
     <color name="list_empty_text">@color/omni_color2</color>
     <color name="low_storage_action_item_color">#ffeeeeee</color>
