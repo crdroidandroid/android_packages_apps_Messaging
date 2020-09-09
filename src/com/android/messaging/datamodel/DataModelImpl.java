@@ -66,11 +66,11 @@ public class DataModelImpl extends DataModel {
     private final DatabaseHelper mDatabaseHelper;
     private final SyncManager mSyncManager;
 
-    // Cached ConnectivityUtil instance for Pre-L_MR1
-    private static ConnectivityUtil sConnectivityUtilInstanceCachePreLMR1 = null;
-    // Cached ConnectivityUtil subId->instance for L_MR1 and beyond
+    // Cached ConnectivityUtil instance for Pre-N.
+    private static ConnectivityUtil sConnectivityUtilInstanceCachePreN = null;
+    // Cached ConnectivityUtil subId->instance for N and beyond
     private static final ConcurrentHashMap<Integer, ConnectivityUtil>
-            sConnectivityUtilInstanceCacheLMR1 = new ConcurrentHashMap<>();
+            sConnectivityUtilInstanceCacheN = new ConcurrentHashMap<>();
 
     public DataModelImpl(final Context context) {
         super();
@@ -79,11 +79,6 @@ public class DataModelImpl extends DataModel {
         mDataModelWorker = new BackgroundWorker();
         mDatabaseHelper = DatabaseHelper.getInstance(context);
         mSyncManager = new SyncManager();
-        if (OsUtil.isAtLeastL_MR1()) {
-            createConnectivityUtilForLMR1();
-        } else {
-            sConnectivityUtilInstanceCachePreLMR1 = new ConnectivityUtil(context);
-        }
     }
 
     @Override
@@ -219,6 +214,12 @@ public class DataModelImpl extends DataModel {
 
     @Override
     public void onApplicationCreated() {
+        if (OsUtil.isAtLeastN()) {
+            createConnectivityUtilForEachActiveSubscription();
+        } else {
+            sConnectivityUtilInstanceCachePreN = new ConnectivityUtil(mContext);
+        }
+
         FixupMessageStatusOnStartupAction.fixupMessageStatus();
         ProcessPendingMessagesAction.processFirstPendingMessage();
         SyncManager.immediateSync();
@@ -236,13 +237,15 @@ public class DataModelImpl extends DataModel {
                             // gracefully
                             MmsConfig.loadAsync();
                             ParticipantRefresh.refreshSelfParticipants();
-                            createConnectivityUtilForLMR1();
+                            if (OsUtil.isAtLeastN()) {
+                                createConnectivityUtilForEachActiveSubscription();
+                            }
                         }
                     });
         }
     }
 
-    private void createConnectivityUtilForLMR1() {
+    private void createConnectivityUtilForEachActiveSubscription() {
         PhoneUtils.forEachActiveSubscription(new PhoneUtils.SubscriptionRunnable() {
             @Override
             public void runForSubscription(int subId) {
@@ -250,17 +253,19 @@ public class DataModelImpl extends DataModel {
                 if (subId <= ParticipantData.DEFAULT_SELF_SUB_ID) {
                     subId = PhoneUtils.getDefault().getDefaultSmsSubscriptionId();
                 }
-                sConnectivityUtilInstanceCacheLMR1.computeIfAbsent(
-                        subId, key -> new ConnectivityUtil(mContext, key));
+                if (!sConnectivityUtilInstanceCacheN.containsKey(subId)) {
+                    sConnectivityUtilInstanceCacheN.put(
+                            subId, new ConnectivityUtil(mContext, subId));
+                }
             }
         });
     }
 
     public static ConnectivityUtil getConnectivityUtil(final int subId) {
-        if (OsUtil.isAtLeastL_MR1()) {
-            return sConnectivityUtilInstanceCacheLMR1.get(subId);
+        if (OsUtil.isAtLeastN()) {
+            return sConnectivityUtilInstanceCacheN.get(subId);
         } else {
-            return sConnectivityUtilInstanceCachePreLMR1;
+            return sConnectivityUtilInstanceCachePreN;
         }
     }
 }
