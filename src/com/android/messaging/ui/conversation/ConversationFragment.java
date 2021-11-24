@@ -1545,7 +1545,7 @@ public class ConversationFragment extends Fragment implements ConversationDataLi
     }
 
     private void updateActionAndStatusBarColor(final ActionBar actionBar) {
-        final int themeColor = ConversationDrawables.get().getConversationThemeColor();
+        final int themeColor = getResources().getColor(R.color.action_bar_background_color);
         actionBar.setBackgroundDrawable(new ColorDrawable(themeColor));
         UiUtils.setStatusBarColor(getActivity(), themeColor);
     }

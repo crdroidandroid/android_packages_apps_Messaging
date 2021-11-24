@@ -17,6 +17,7 @@ package com.android.messaging.ui.conversation;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
@@ -66,6 +67,7 @@ import com.android.messaging.util.Assert;
 import com.android.messaging.util.AvatarUriUtil;
 import com.android.messaging.util.BuglePrefs;
 import com.android.messaging.util.ContentType;
+import com.android.messaging.util.ImageUtils;
 import com.android.messaging.util.LogUtil;
 import com.android.messaging.util.MediaUtil;
 import com.android.messaging.util.OsUtil;
@@ -227,6 +229,13 @@ public class ComposeMessageView extends LinearLayout
             mComposeEditText.setInputType(mComposeEditText.getInputType()
                     & ~InputType.TYPE_TEXT_VARIATION_SHORT_MESSAGE);
         }
+
+        //  Set background color for compose box
+        final Resources resources = mOriginalContext.getResources();
+        Drawable textBackground = ImageUtils.getTintedDrawable(mOriginalContext,
+            resources.getDrawable(R.drawable.msg_bubble_input),
+            resources.getColor(R.color.message_bubble_color_outgoing));
+        ImageUtils.setBackgroundDrawableOnView(mComposeEditText, textBackground);
 
         mSelfSendIcon = (SimIconView) findViewById(R.id.self_send_icon);
         mSelfSendIcon.setOnClickListener(new OnClickListener() {

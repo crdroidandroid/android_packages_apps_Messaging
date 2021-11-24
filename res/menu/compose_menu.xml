@@ -32,6 +32,7 @@
         android:icon="@drawable/ic_numeric_dialpad"
         android:orderInCategory="100"
         android:title="@string/numeric_text_keyboard_toggle_button_content_description"
+        appcompat:iconTint="?android:attr/textColorPrimary"
         appcompat:showAsAction="always"/>
 
     <item

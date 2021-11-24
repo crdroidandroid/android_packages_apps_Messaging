@@ -22,6 +22,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
@@ -147,6 +149,7 @@ public class AvatarRequest extends UriImageRequest<AvatarRequestDescriptor> {
         }
 
         final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColorFilter(new PorterDuffColorFilter(mContext.getResources().getColor(R.color.letter_tile_font_color), PorterDuff.Mode.SRC_IN));
         final Matrix matrix = new Matrix();
         final RectF source = new RectF(0, 0, defaultPerson.getWidth(), defaultPerson.getHeight());
         final RectF dest = new RectF(0, 0, width, height);

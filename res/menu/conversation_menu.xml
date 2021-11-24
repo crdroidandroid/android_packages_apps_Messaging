@@ -22,6 +22,7 @@
     <item
         android:id="@+id/action_call"
         android:icon="@drawable/ic_phone_small_light"
+        appcompat:iconTint="?android:attr/textColorPrimary"
         android:orderInCategory="80"
         android:title="@string/action_call"
         appcompat:showAsAction="ifRoom"/>

@@ -19,7 +19,7 @@
         Base application theme, dependent on API level. This theme is replaced
         by BugleBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="BugleBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="BugleBaseTheme" parent="@android:style/Theme.DeviceDefault.Light.DarkActionBar">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -37,10 +37,13 @@
          <item name="colorAccent">@color/lineage_accent</item>
          <item name="android:textColorHighlight">@color/text_highlight_color</item>
          <item name="actionBarStyle">@style/BugleActionBar</item>
+         <item name="actionBarTheme">@style/BugleActionBarTheme</item>
          <item name="apnPreferenceStyle">@style/ApnPreference</item>
+         <item name="colorControlNormal">@color/text_color_primary</item>
+         <item name="android:statusBarColor">@color/action_bar_background_color</item>
     </style>
 
-    <style name="LaunchTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="LaunchTheme" parent="@android:style/Theme.DeviceDefault.DayNight">
          <item name="colorPrimary">@color/action_bar_background_color</item>
          <item name="colorPrimaryDark">@color/action_bar_background_color_dark</item>
     </style>
@@ -57,11 +60,11 @@
         <item name="android:fastScrollPreviewBackgroundRight">@drawable/contacts_fastscroll_label_right</item>
     </style>
 
-    <style name="BugleTheme.DialogActivity" parent="@style/Theme.AppCompat.Light.Dialog">
+    <style name="BugleTheme.DialogActivity" parent="@android:style/Theme.DeviceDefault.Light.Dialog">
     </style>
 
     <style name="BugleTheme.ConversationListActivity" parent="BugleTheme">
-        <item name="android:windowBackground">@android:color/background_light</item>
+        <item name="android:windowBackground">@*android:color/primary_device_default_light</item>
     </style>
 
     <style name="BugleTheme.ArchivedConversationListActivity" parent="BugleTheme.ConversationListActivity">
@@ -70,7 +73,11 @@
     </style>
 
     <style name="BugleTheme.SettingsActivity" parent="BugleTheme">
+        <item name="android:windowBackground">@color/conversation_background</item>
         <item name="android:textSize">@dimen/settings_list_text_size</item>
+        <item name="colorPrimary">?android:attr/colorAccent</item>
+        <item name="colorPrimaryDark">?android:attr/colorAccent</item>
+
     </style>
 
     <style name="Invisible" parent="BugleBaseTheme">
@@ -91,14 +98,21 @@
         <item name="android:windowDisablePreview">true</item>
     </style>
 
-    <style name="BugleActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+    <style name="BugleActionBar" parent="@android:style/Widget.DeviceDefault.ActionBar">
         <item name="height">@dimen/action_bar_height</item>
         <item name="displayOptions">showTitle</item>
         <item name="titleTextStyle">@style/BugleActionBarTitleTextStyle</item>
+        <item name="colorControlNormal">@color/text_color_primary</item>
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
     </style>
 
-    <style name="BugleActionBarTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-      <item name="android:textColor">@color/action_bar_title_text_color</item>
+    <style name="BugleActionBarTheme" paremt="@android:style/Widget.DeviceDefault.ActionBar">
+        <item name="colorControlNormal">@color/text_color_primary</item>
+    </style>
+
+    <style name="BugleActionBarTitleTextStyle" parent="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title">
+      <item name="android:textColor">?android:attr/textColorPrimary</item>
       <item name="android:textSize">@dimen/action_bar_text_size</item>
       <item name="android:lines">1</item>
     </style>
@@ -117,7 +131,7 @@
 
     <style name="ConversationMessage" parent="ConversationMessageText">
         <item name="android:textSize">@dimen/conversation_message_text_size</item>
-        <item name="android:textColor">@color/message_text</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
 
     <style name="ConversationMessageStatus" parent="ConversationMessageText">
@@ -127,16 +141,16 @@
     <style name="ConversationMessageTitle" parent="ConversationMessageText">
         <item name="android:textSize">@dimen/conversation_title_text_size</item>
         <item name="android:background">@null</item>
-        <item name="android:textColor">@color/message_title_text</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="ConversationMessageInfo" parent="ConversationMessageText">
         <item name="android:textSize">@dimen/conversation_info_text_size</item>
-        <item name="android:textColor">@color/message_info_text</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="ConversationComposeSendText">
-        <item name="android:textColor">@color/compose_send_text_color</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:singleLine">false</item>
         <item name="android:textSize">@dimen/conversation_compose_send_text_size</item>
         <item name="android:gravity">center_vertical</item>
@@ -159,13 +173,13 @@
 
     <style name="ContactListItem">
         <item name="android:textSize">@dimen/contact_list_text_size</item>
-        <item name="android:textColor">@color/contact_list_text_primary</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:background">@null</item>
     </style>
 
     <style name="ContactListItemDetail">
         <item name="android:textSize">@dimen/contact_list_detail_text_size</item>
-        <item name="android:textColor">@color/contact_list_text_secondary</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:background">@null</item>
     </style>
 
@@ -179,15 +193,15 @@
 
     <style name="RecipientEditTextView">
         <item name="android:textSize">@dimen/recipient_edit_text_size</item>
-        <item name="android:textColor">@color/compose_contact_text</item>
-        <item name="android:textColorHint">@color/compose_contact_faint_text</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textColorHint">?android:attr/textColorSecondary</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:paddingLeft">4dp</item>
         <item name="android:paddingRight">4dp</item>
     </style>
 
     <style name="PagerTabHeader">
-        <item name="android:textColor">@color/tab_text_color</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textSize">@dimen/pager_tab_header_text_size</item>
         <item name="android:background">@null</item>
         <item name="android:textStyle">bold</item>
@@ -288,12 +302,12 @@
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">14sp</item>
         <item name="android:background">@null</item>
-        <item name="android:textColor">@color/conversation_list_details</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
 
     <style name="ConversationListItemViewConversationNameStyle" parent="ConversationListItemViewTextStyle">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/conversation_list_name</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="ComposeMessageViewFrameLayoutStyle">
@@ -359,16 +373,15 @@
 
     <style name="PeopleAndOptionsSectionHeader">
         <item name="android:textSize">@dimen/people_and_options_header_text_size</item>
-        <item name="android:textColor">@color/people_and_options_header_text</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:background">@null</item>
     </style>
 
-    <style name="DropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
-      <item name="android:dividerHeight">0dp</item>
+    <style name="DropDownListViewStyle" parent="@android:style/Widget.DeviceDefault.PopupMenu">
     </style>
 
     <style name="ComposeMessageViewMessageBodySizeStyle">
-        <item name="android:textColor">@color/message_body_size_text_color</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
         <item name="android:textSize">@dimen/message_body_size_text_size</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:layout_gravity">right|center_vertical</item>
@@ -479,7 +492,7 @@
 
     <style name="SettingsListItem">
         <item name="android:textSize">@dimen/settings_list_text_size</item>
-        <item name="android:textColor">@color/settings_list_text_primary</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:background">@null</item>
     </style>
 
@@ -506,13 +519,13 @@
     </style>
 
     <style name="WidgetTitle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/action_bar_title_text_color</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:singleLine">true</item>
         <item name="android:layout_marginEnd">8dp</item>
     </style>
 
     <style name="WidgetConversationTitle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/widget_conversation_title_color</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:singleLine">true</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:textSize">@dimen/widget_conversation_title_size</item>
