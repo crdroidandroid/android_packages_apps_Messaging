@@ -38,7 +38,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.AbsListView;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.android.messaging.R;
 import com.android.messaging.annotation.VisibleForAnimation;
@@ -90,7 +90,7 @@ public class ConversationListFragment extends Fragment implements ConversationLi
 
     private ConversationListFragmentHost mHost;
     private RecyclerView mRecyclerView;
-    private ImageView mStartNewConversationButton;
+    private LinearLayout mStartNewConversationButton;
     private ListEmptyView mEmptyListMessageView;
     private ConversationListAdapter mAdapter;
 
@@ -218,7 +218,7 @@ public class ConversationListFragment extends Fragment implements ConversationLi
             mListState = savedInstanceState.getParcelable(SAVED_INSTANCE_STATE_LIST_VIEW_STATE_KEY);
         }
 
-        mStartNewConversationButton = (ImageView) rootView.findViewById(
+        mStartNewConversationButton = (LinearLayout) rootView.findViewById(
                 R.id.start_new_conversation_button);
         if (mArchiveMode) {
             mStartNewConversationButton.setVisibility(View.GONE);

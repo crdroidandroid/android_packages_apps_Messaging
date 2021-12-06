@@ -35,19 +35,30 @@
         android:visibility="gone"
         android:layout_marginBottom="@dimen/conversation_list_empty_text_bottom_margin" />
 
-    <ImageView
+    <LinearLayout
         style="@style/ConversationListFragmentStartNewButtonStyle"
+        android:background="@drawable/fab_bg"
+        android:contentDescription="@string/start_new_conversation"
         android:id="@+id/start_new_conversation_button"
-        android:layout_width="@dimen/fab_size"
-        android:layout_height="@dimen/fab_size"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="bottom|right|center_vertical|center_horizontal|center|end"
+        android:layout_height="56dp"
         android:layout_marginBottom="@dimen/fab_bottom_margin"
-        android:paddingBottom="@dimen/fab_padding_bottom"
-        android:background="@drawable/fab_new_message_bg"
-        android:elevation="@dimen/fab_elevation"
-        android:scaleType="center"
-        android:src="@drawable/ic_add_white"
-        android:stateListAnimator="@animator/fab_anim"
-        android:contentDescription="@string/start_new_conversation"/>
+        android:layout_width="132dp">
+
+	    <ImageView
+        	android:layout_gravity="center_vertical"
+	        android:layout_height="24dp"
+	        android:layout_marginStart="20dp"
+	        android:layout_width="24dp"
+	        android:src="@drawable/ic_add_white" />
+
+	    <TextView
+        	android:layout_gravity="center_vertical"
+	        android:layout_height="wrap_content"
+        	android:layout_marginStart="8dp"
+	        android:layout_width="wrap_content"
+        	android:text="Start chat"
+	        android:textColor="#fff" />
+    </LinearLayout>
 
 </FrameLayout>
