@@ -15,10 +15,21 @@
     limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="swipe_to_delete_conversation_pref_title">Grad-shlaighd airson a sguabadh às</string>
-    <string name="swipe_to_delete_conversation_pref_summary">Grad-shlaighd gun taobh deas airson còmhradh a sguabadh às</string>
-    <string name="show_emoticons_pref_title">Cothrom air samhlaidhean-gnùise</string>
-    <string name="show_emoticons_pref_summary">Seall iuchair nan samhlaidhean-gnùise air a’ mheur-chlàr</string>
-    <string name="notification_mark_as_read">Cuir comharra gun deach a leughadh</string>
-    <string name="notification_channel_messages_title">Teachdaireachdan</string>
+    <string-array name="empty_subject_strings">
+        <item>peruna chistione</item>
+        <item>peruna chistione</item>
+    </string-array>
+    <string-array name="notification_reply_choices">
+        <item>Yes</item>
+        <item>No</item>
+        <item>OK</item>
+        <item>Hehe</item>
+        <item>Thanks</item>
+        <item>De acordu</item>
+        <item>Belleddu</item>
+        <item>In su caminu meu</item>
+        <item>OK, let me get back to you later</item>
+        <item>:)</item>
+        <item>:(</item>
+    </string-array>
 </resources>
