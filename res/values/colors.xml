@@ -15,16 +15,16 @@
     limitations under the License.
 -->
 <resources>
-    <color name="primary_color">@android:color/system_neutral1_400</color>
+    <color name="primary_color">@*android:color/system_accent1_600</color>
     <color name="permission_check_activity_background">@color/primary_color</color>
 
     <!--  Action bar -->
-    <color name="action_bar_title_text_color">@android:color/system_accent1_50</color>
+    <color name="action_bar_title_text_color">@*android:color/system_neutral1_0</color>
     <color name="action_bar_background_color">@android:color/system_accent1_600</color>
-    <color name="action_bar_background_color_dark">@android:color/system_accent1_600</color>
-    <color name="contextual_action_bar_background_color">#ffffff</color>
-    <color name="archived_conversation_action_bar_background_color">@android:color/system_accent1_600</color>
-    <color name="archived_conversation_action_bar_background_color_dark">@android:color/system_accent1_600</color>
+    <color name="action_bar_background_color_dark">@*android:color/system_accent1_700</color>
+    <color name="contextual_action_bar_background_color">@*android:color/system_accent1_600</color>
+    <color name="archived_conversation_action_bar_background_color">@*android:color/system_accent1_700</color>
+    <color name="archived_conversation_action_bar_background_color_dark">@*android:color/system_accent1_600</color>
 
     <!-- Conversation list -->
     <color name="conversation_list_item_read">#636363</color>
@@ -67,7 +67,7 @@
     <color name="message_bubble_color_outgoing">#ffffffff</color>
     <color name="message_error_bubble_color_incoming">#e2e2e2</color>
     <color name="message_audio_button_color_incoming">#ffffffff</color>
-    <color name="message_bubble_color_selected">@android:color/system_accent3_300</color>
+    <color name="message_bubble_color_selected">@*android:color/system_accent3_300</color>
     <color name="message_image_selected_tint">#7f040000</color>
     <color name="generic_video_icon">#ff808080</color>
 
@@ -76,7 +76,7 @@
 
     <!-- Activity background color -->
     <drawable name="class_zero_background">#7f040000</drawable>
-    <color name="window_background">@android:color/system_neutral1_10</color>
+    <color name="window_background">@*android:color/system_neutral1_50</color>
 
     <color name="contact_avatar_default_background">#d2d2d2</color>
     <color name="contact_avatar_pressed_color">#40000000</color>
@@ -104,15 +104,18 @@
     <color name="attachment_preview_more_items_text_background">#44000000</color>
 
     <array name="letter_tile_colors">
-        <item>@android:color/system_accent1_300</item>
-        <item>@android:color/system_accent2_300</item>
-        <item>@android:color/system_accent3_300</item>
-        <item>@android:color/system_accent1_400</item>
-        <item>@android:color/system_accent2_400</item>
-        <item>@android:color/system_accent3_400</item>
-        <item>@android:color/system_accent1_500</item>
-        <item>@android:color/system_accent2_500</item>
-        <item>@android:color/system_accent3_500</item>
+        <item>@*android:color/system_accent1_300</item>
+        <item>@*android:color/system_accent2_300</item>
+        <item>@*android:color/system_accent3_300</item>
+        <item>@*android:color/system_accent1_400</item>
+        <item>@*android:color/system_accent2_400</item>
+        <item>@*android:color/system_accent3_400</item>
+        <item>@*android:color/system_accent1_500</item>
+        <item>@*android:color/system_accent2_500</item>
+        <item>@*android:color/system_accent3_500</item>
+        <item>@*android:color/system_accent1_600</item>
+        <item>@*android:color/system_accent2_600</item>
+        <item>@*android:color/system_accent3_600</item>
     </array>
 
     <color name="letter_tile_font_color">#ffffff</color>
