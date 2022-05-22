@@ -67,7 +67,7 @@
     <color name="message_bubble_color_outgoing">#ffffffff</color>
     <color name="message_error_bubble_color_incoming">#e2e2e2</color>
     <color name="message_audio_button_color_incoming">#ffffffff</color>
-    <color name="message_bubble_color_selected">@android:color/system_accent3_200</color>
+    <color name="message_bubble_color_selected">@android:color/system_accent3_300</color>
     <color name="message_image_selected_tint">#7f040000</color>
     <color name="generic_video_icon">#ff808080</color>
 
@@ -104,18 +104,15 @@
     <color name="attachment_preview_more_items_text_background">#44000000</color>
 
     <array name="letter_tile_colors">
-        <item>@android:color/system_accent1_100</item>
-        <item>@android:color/system_accent2_100</item>
-        <item>@android:color/system_accent3_100</item>
-        <item>@android:color/system_accent1_200</item>
-        <item>@android:color/system_accent2_200</item>
-        <item>@android:color/system_accent3_200</item>
         <item>@android:color/system_accent1_300</item>
         <item>@android:color/system_accent2_300</item>
         <item>@android:color/system_accent3_300</item>
         <item>@android:color/system_accent1_400</item>
         <item>@android:color/system_accent2_400</item>
         <item>@android:color/system_accent3_400</item>
+        <item>@android:color/system_accent1_500</item>
+        <item>@android:color/system_accent2_500</item>
+        <item>@android:color/system_accent3_500</item>
     </array>
 
     <color name="letter_tile_font_color">#ffffff</color>
