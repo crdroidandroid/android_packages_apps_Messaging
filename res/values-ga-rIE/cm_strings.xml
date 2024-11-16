@@ -17,4 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="swipe_to_delete_conversation_pref_title">Svaidhpeáil le scriosadh</string>
     <string name="swipe_to_delete_conversation_pref_summary">Svaidhpeáil ar dheis chun comhrá a scriosadh</string>
+    <string name="show_emoticons_pref_title">Rochtain straoiseoga</string>
+    <string name="show_emoticons_pref_summary">Taispeáin an eochair straoiseog ar an méarchlár</string>
+    <string name="notification_channel_messages_title">Teachtaireachtaí</string>
 </resources>
