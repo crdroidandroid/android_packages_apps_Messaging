@@ -16,6 +16,7 @@
  */
 package com.android.messaging.datamodel.data;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
@@ -25,8 +26,11 @@ import android.support.v7.mms.pdu.ContentType;
 
 import androidx.annotation.NonNull;
 
+import com.android.messaging.Factory;
+import com.android.messaging.sms.MmsConfig;
 import com.android.messaging.util.Assert;
 import com.android.messaging.util.LogUtil;
+import com.android.messaging.util.UltraHdrUtils;
 import com.android.messaging.util.UriUtil;
 
 import java.util.concurrent.Executors;
@@ -115,12 +119,34 @@ public class PendingAttachmentData extends MessagePartData {
             final Uri contentUri = getContentUri();
             final Uri persistedUri = UriUtil.persistContentToScratchSpace(contentUri);
             if (persistedUri != null) {
+                Uri attachmentUri = persistedUri;
+                String attachmentContentType = getContentType();
+                int attachmentWidth = getWidth();
+                int attachmentHeight = getHeight();
+                if (ContentType.isImageType(attachmentContentType)) {
+                    // MMS is SDR only; replace gain map images with a tonemapped JPEG copy.
+                    final Context context = Factory.get().getApplicationContext();
+                    final MmsConfig mmsConfig = MmsConfig.get(ParticipantData.DEFAULT_SELF_SUB_ID);
+                    final UltraHdrUtils.ConvertedImage converted = UltraHdrUtils.convertToSdrJpeg(
+                            context, persistedUri, mmsConfig.getMaxImageWidth(),
+                            mmsConfig.getMaxImageHeight(), UltraHdrUtils.DEFAULT_JPEG_QUALITY);
+                    if (converted != null) {
+                        final Uri sdrUri = UltraHdrUtils.writeToScratchSpace(converted.bytes);
+                        if (sdrUri != null) {
+                            attachmentUri = sdrUri;
+                            attachmentContentType = ContentType.IMAGE_JPEG;
+                            attachmentWidth = converted.width;
+                            attachmentHeight = converted.height;
+                            UltraHdrUtils.deleteScratchFile(persistedUri);
+                        }
+                    }
+                }
                 data = MessagePartData.createMediaMessagePart(
                         getText(),
-                        getContentType(),
-                        persistedUri,
-                        getWidth(),
-                        getHeight());
+                        attachmentContentType,
+                        attachmentUri,
+                        attachmentWidth,
+                        attachmentHeight);
             }
 
             final MessagePartData attachment = data;

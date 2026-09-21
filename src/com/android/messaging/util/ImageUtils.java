@@ -690,6 +690,18 @@ public class ImageUtils {
                         mScaled = mDecoded;
                     }
                 }
+                if (UltraHdrUtils.hasGainmap(mScaled)) {
+                    // MMS is SDR only; apply the gain map and drop it before encoding.
+                    final Bitmap tonemapped = UltraHdrUtils.tonemapToSdr(mScaled);
+                    if (tonemapped != null) {
+                        if (mScaled != mDecoded) {
+                            mScaled.recycle();
+                        }
+                        mScaled = tonemapped;
+                    } else {
+                        UltraHdrUtils.stripGainmap(mScaled);
+                    }
+                }
                 // Now encode it at current quality
                 encoded = ImageUtils.bitmapToBytes(mScaled, mQuality);
                 if (encoded != null) {

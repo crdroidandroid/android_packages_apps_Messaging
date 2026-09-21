@@ -68,6 +68,7 @@ import com.android.messaging.util.ImageUtils.ImageResizer;
 import com.android.messaging.util.LogUtil;
 import com.android.messaging.util.MediaMetadataRetrieverWrapper;
 import com.android.messaging.util.PhoneUtils;
+import com.android.messaging.util.UltraHdrUtils;
 import com.google.common.base.Joiner;
 
 import java.io.FileNotFoundException;
@@ -315,7 +316,13 @@ public class MmsUtils {
                 String contentType = part.getContentType();
                 final String extension = ContentType.getExtensionFromMimeType(contentType);
                 if (ContentType.isImageType(contentType)) {
-                    if (extension != null) {
+                    // MMS is SDR only; force any surviving gain map image through the JPEG converter.
+                    final boolean hasGainmap =
+                            UltraHdrUtils.hasGainmap(context, part.getContentUri());
+                    if (hasGainmap) {
+                        contentType = ContentType.IMAGE_JPEG;
+                        srcName = String.format(Locale.getDefault(), "image%06d.jpg", index);
+                    } else if (extension != null) {
                         srcName = String.format(Locale.getDefault(), "image%06d.%s", index,
                                 extension);
                     } else {
@@ -330,7 +337,8 @@ public class MmsUtils {
                     }
                     smilBody.append(String.format(sSmilImagePart, srcName));
                     totalLength += addPicturePart(context, pb, index, part,
-                            widthLimit, heightLimit, bytesPerImage, srcName, contentType);
+                            widthLimit, heightLimit, bytesPerImage, srcName, contentType,
+                            hasGainmap);
                     hasVisualAttachment = true;
                 } else if (ContentType.isVideoType(contentType)) {
                     srcName = String.format(Locale.getDefault(), "video%06d.%s", index,
@@ -438,7 +446,8 @@ public class MmsUtils {
 
     private static int addPicturePart(final Context context, final PduBody pb, final int index,
             final MessagePartData messagePart, int widthLimit, int heightLimit,
-            final int maxPartSize, final String srcName, final String contentType) {
+            final int maxPartSize, final String srcName, final String contentType,
+            final boolean hasGainmap) {
         final Uri imageUri = messagePart.getContentUri();
         final int width = messagePart.getWidth();
         final int height = messagePart.getHeight();
@@ -469,7 +478,8 @@ public class MmsUtils {
         // MediaModel.initMediaSize. Sometimes it'll compute zero and it's costly to read the
         // whole stream to compute the size. When we call getResizedImageAsPart(), we'll correctly
         // set the size.
-        if (imageSize <= maxPartSize &&
+        if (!hasGainmap &&
+                imageSize <= maxPartSize &&
                 width <= widthLimit &&
                 height <= heightLimit &&
                 (orientation == androidx.exifinterface.media.ExifInterface.ORIENTATION_UNDEFINED ||

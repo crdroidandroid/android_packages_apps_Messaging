@@ -60,6 +60,7 @@ public class MessagePartData implements Parcelable {
                 // Acceptable image types
                 ContentType.IMAGE_JPEG, ContentType.IMAGE_JPG, ContentType.IMAGE_PNG,
                 ContentType.IMAGE_GIF, ContentType.IMAGE_WBMP, ContentType.IMAGE_X_MS_BMP,
+                ContentType.IMAGE_HEIC, ContentType.IMAGE_HEIF,
                 // Acceptable video types
                 ContentType.VIDEO_3GP, ContentType.VIDEO_3GPP, ContentType.VIDEO_3G2,
                 ContentType.VIDEO_H263, ContentType.VIDEO_M4V, ContentType.VIDEO_MP4,

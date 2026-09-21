@@ -57,6 +57,8 @@ public final class ContentType {
     public static final String IMAGE_WBMP        = "image/vnd.wap.wbmp";
     public static final String IMAGE_PNG         = "image/png";
     public static final String IMAGE_X_MS_BMP    = "image/x-ms-bmp";
+    public static final String IMAGE_HEIC        = "image/heic";
+    public static final String IMAGE_HEIF        = "image/heif";
 
     public static final String AUDIO_AAC         = "audio/aac";
     public static final String AUDIO_AMR         = "audio/amr";
