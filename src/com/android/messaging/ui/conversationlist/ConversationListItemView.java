@@ -630,8 +630,9 @@ public class ConversationListItemView extends FrameLayout implements OnClickList
     private boolean processClick(final View v, final boolean isLongClick) {
         // The row itself receives the click when it is activated from an accessibility
         // service, since the swipeable container is not part of the accessibility tree.
+        // The audio attachment view only forwards long clicks (see bind()).
         Assert.isTrue(v == mSwipeableContainer || v == mContactIconView
-                || v == mImagePreviewView || v == this);
+                || v == mImagePreviewView || v == mAudioAttachmentView || v == this);
         Assert.notNull(mData.getName());
 
         if (mHostInterface != null) {
